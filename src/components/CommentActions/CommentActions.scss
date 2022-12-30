@@ -1,0 +1,55 @@
+@import "/src/styles/variables";
+
+.comment {
+  &__actions {
+    position: absolute;
+    inset-block-end: 15px;
+    inset-inline-end: 15px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    @media screen and (min-width: 700px) {
+      inset-block-start: 15px;
+      inline-size: max-content;
+      block-size: max-content;
+    }
+
+    .button {
+      background: transparent;
+      border: none;
+      outline: none;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 400;
+      block-size: 40px;
+      cursor: pointer;
+      transition: scale 300ms ease;
+
+      @media screen and (min-width: 700px) {
+        block-size: auto;
+      }
+
+      &:hover {
+        scale: 0.98;
+        opacity: .7;
+      }
+
+      &:active {
+        scale: 0.98;
+        opacity: .7;
+      }
+
+      &__outline-primary {
+        color: $moderate-blue;
+      }
+
+      &__outline-danger {
+        color: $soft-red;
+      }
+    }
+  }
+}

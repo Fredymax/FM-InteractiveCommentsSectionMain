@@ -1,0 +1,82 @@
+@import "../../styles/variables";
+
+.reply {
+  display: grid;
+  grid-template-columns: 45px auto 100px;
+  grid-template-areas: "user reply actions";
+  gap: 15px;
+  padding-inline: 15px;
+  padding-block: 15px;
+  background-color: $white;
+  border-radius: 10px;
+  margin-block-end: 10px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "reply reply"
+      "user actions"
+    ;
+  }
+
+  .user {
+    grid-area: user;
+
+    &__avatar {
+      inline-size: 40px;
+      block-size: 40px;
+
+      img {
+        vertical-align: middle;
+        inline-size: 100%;
+      }
+    }
+
+    &__reply {
+      grid-area: reply;
+
+      textarea {
+        inline-size: 100%;
+        block-size: 94px;
+        resize: none;
+        border: 1px solid $moderate-blue;
+        border-radius: 10px;
+        padding-block: 10px;
+        padding-inline: 10px;
+        font-family: inherit;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    &__action {
+      grid-area: actions;
+
+      button {
+        letter-spacing: 0.02em;
+        font-size: 14px;
+        font-weight: bold;
+        background-color: $moderate-blue;
+        color: $white;
+        outline: none;
+        border: none;
+        padding-inline: 25px;
+        padding-block: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &:hover {
+          scale: 0.98;
+        }
+
+        &:disabled {
+          pointer-events: none;
+          opacity: .5;
+          cursor: default;
+        }
+      }
+    }
+  }
+}

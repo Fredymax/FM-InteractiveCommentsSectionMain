@@ -1,0 +1,76 @@
+@import "/src/styles/variables";
+
+.comment {
+  &__like {
+    display: flex;
+    max-inline-size: 100px;
+    inline-size: 100%;
+    text-align: center;
+    block-size: 40px;
+    background-color: $very-light-gray;
+    border-radius: 10px;
+
+    @media screen and (min-width: 700px) {
+      flex-direction: column;
+      block-size: auto;
+      inline-size: 40px;
+      justify-content: center;
+      align-items: center;
+      max-block-size: 100px;
+    }
+
+    &>* {
+      flex: 1;
+    }
+
+    button {
+      outline: none;
+      border: none;
+      flex: 1;
+      background: transparent;
+      inline-size: 100%;
+
+      &.plus,
+      &.minus {
+        svg path {
+          fill: #C5C6EF !important;
+        }
+
+        pointer-events: none;
+
+        &.is-active {
+          cursor: pointer;
+          pointer-events: all;
+        }
+
+        &.is-active:hover svg {
+          path {
+            fill: hsl(238, 40%, 52%) !important;
+          }
+        }
+
+        &.is-active:active svg {
+          scale: 0.9;
+
+          path {
+            fill: hsl(238, 40%, 52%) !important;
+          }
+        }
+      }
+    }
+
+    .count {
+      flex: 1;
+      align-self: center;
+      color: $moderate-blue;
+      font-weight: 500;
+      font-size: 16px;
+      user-select: none;
+
+      @media screen and (min-width: 700px) {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.modal {
+  &__backdrop {
+    position: fixed;
+    z-index: 100;
+    inset-inline-end: 0;
+    inset-block-start: 0;
+    background-color: hsla(0 0% 0% / 0.15);
+    inline-size: 100%;
+    block-size: 100%;
+    display: grid;
+    place-items: center;
+  }
+
+  &__container {
+    background-color: #fff;
+    max-inline-size: 400px;
+    max-block-size: 250px;
+    inline-size: 100%;
+    block-size: 100%;
+    padding: 2rem;
+    border-radius: .5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

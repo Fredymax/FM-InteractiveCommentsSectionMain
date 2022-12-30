@@ -1,0 +1,109 @@
+@import "/src/styles/variables";
+
+.comment {
+  &__information {
+    inline-size: 100%;
+    font-size: 16px;
+
+    .user {
+      inline-size: 100%;
+      font-size: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      &__information {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      &__avatar {
+        inline-size: 32px;
+        block-size: 32px;
+      }
+
+      &__photo {
+        inline-size: 100%;
+        block-size: 100%;
+      }
+
+      &__name {
+        font-weight: 500;
+        color: $dark-blue;
+        font-size: 1em;
+      }
+
+      &__you {
+        background-color: $moderate-blue;
+        border-radius: 5px;
+        font-size: 13px;
+        padding: 5px;
+        color: $white;
+        line-height: 1;
+      }
+
+      &__date {
+        color: $grayish-blue;
+        font-weight: 400;
+        font-size: 1em;
+      }
+
+      textarea {
+        padding: .3em;
+        border-radius: .2em;
+
+        &:focus {
+          outline: none;
+          border-color: $moderate-blue;
+        }
+      }
+
+      &__comment {
+        color: $grayish-blue;
+        font-size: 1em;
+        line-height: 152.02%;
+        font-family: inherit;
+        min-block-size: 90px;
+        max-block-size: 200px;
+        resize: vertical;
+
+        & span {
+          color: $moderate-blue;
+          font-weight: 500;
+
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+
+      button {
+        display: inline-flex;
+        align-self: flex-end;
+        letter-spacing: 0.02em;
+        font-size: 14px;
+        font-weight: bold;
+        background-color: $moderate-blue;
+        color: $white;
+        outline: none;
+        border: none;
+        padding-inline: 25px;
+        padding-block: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &:hover {
+          scale: 0.98;
+        }
+
+        &:disabled {
+          pointer-events: none;
+          opacity: .5;
+          cursor: default;
+        }
+      }
+    }
+  }
+}

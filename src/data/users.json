@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "image": {
+      "png": "image-juliusomo.png",
+      "webp": "image-juliusomo.webp"
+    },
+    "username": "juliusomo"
+  },
+  {
+    "id": 2,
+    "image": {
+      "png": "image-amyrobson.png",
+      "webp": "image-amyrobson.webp"
+    },
+    "username": "amyrobson"
+  },
+  {
+    "id": 3,
+    "image": {
+      "png": "image-maxblagun.png",
+      "webp": "image-maxblagun.webp"
+    },
+    "username": "maxblagun"
+  },
+  {
+    "id": 4,
+    "image": {
+      "png": "image-ramsesmiron.png",
+      "webp": "image-ramsesmiron.webp"
+    },
+    "username": "ramsesmiron"
+  }
+]

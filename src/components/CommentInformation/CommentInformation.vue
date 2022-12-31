@@ -40,9 +40,9 @@ const user = computed(() => getUserById(userId.value));
 const avatar = ref(null);
 
 watchEffect(() => {
-  if (user) {
+  if (user.value) {
     const uriImage = new URL(
-      `/src/assets/images/avatars/${user?.image?.webp}`,
+      `/src/assets/images/avatars/${user.value?.image?.webp}`,
       import.meta.url
     ).href;
     avatar.value = uriImage;

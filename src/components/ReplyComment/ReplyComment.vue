@@ -49,11 +49,12 @@ onMounted(() => {
 
 watchEffect(() => {
   if (Auth) {
-    const uriImage = new URL(
-      `/src/assets/images/avatars/${Auth?.image?.webp}`,
-      import.meta.url
-    ).href;
-    avatar.value = uriImage;
+    // const uriImage = new URL(
+    //   `/src/assets/images/avatars/${Auth?.image?.webp}`,
+    //   import.meta.url
+    // ).href;
+
+    avatar.value = getAvatar(Auth?.image?.webp);
   }
 });
 

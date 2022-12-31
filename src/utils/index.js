@@ -6,7 +6,7 @@ export const getLikes = () => getNumberRandom();
 
 export const getAvatar = (nameAvatar) => {
   if (!nameAvatar) return null;
-  const pathname = `/src/assets/images/avatars/${nameAvatar}`;
-  const urlImage = new URL(pathname, import.meta.url);
+  let pathname = `/src/assets/images/avatars/${nameAvatar}`;
+  let urlImage = new URL(pathname, import.meta.url);
   return urlImage.href;
 };

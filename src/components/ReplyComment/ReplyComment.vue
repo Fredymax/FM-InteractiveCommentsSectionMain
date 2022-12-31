@@ -18,7 +18,6 @@
 <script setup>
 import useUsers from "@/composables/useUsers";
 import useComments from "@/composables/useComments";
-import { getAvatar } from "@/utils";
 import { onMounted, ref, inject, watch, toRefs, watchEffect } from "vue";
 const Swal = inject("$swal");
 
@@ -41,17 +40,21 @@ const disabled = ref(true);
 const comment = ref("");
 
 onMounted(() => {
-  avatar.value = getAvatar(Auth?.image?.webp);
   const replyTo = getUserById(replyToUserId.value);
   if (replyTo) {
     comment.value = `@${replyTo.username} `;
   }
 });
-// watchEffect(() => {
-//   if (Auth) {
-//     avatar.value = getAvatar(Auth?.image?.webp);
-//   }
-// });
+
+watchEffect(() => {
+  if (Auth) {
+    const uriImage = new URL(
+      `/src/assets/images/avatars/${Auth?.image?.webp}`,
+      import.meta.url
+    ).href;
+    avatar.value = uriImage;
+  }
+});
 
 watch(comment, (newValue) => {
   disabled.value = newValue.length == 0;

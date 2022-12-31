@@ -4,7 +4,10 @@
       <img :src="avatar" class="user__photo" alt="..." />
     </figure>
     <div class="user__reply">
-      <textarea v-model="comment" :placeholder="commentId ? 'Add comment' : 'Reply to the comment'"></textarea>
+      <textarea
+        v-model="comment"
+        :placeholder="!commentId ? 'Add comment' : 'Reply to the comment'"
+      ></textarea>
     </div>
     <div class="user__action">
       <button @click="saveComment()" :disabled="disabled">{{ commentId ? "REPLY" : "SEND" }}</button>
@@ -46,8 +49,10 @@ onMounted(() => {
 
 watchEffect(() => {
   if (Auth) {
-    const pathImage = `/src/assets/images/avatars/${Auth?.image?.webp}`;
-    const uriImage = new URL(pathImage, import.meta.url).href;
+    const uriImage = new URL(
+      `/src/assets/images/avatars/${Auth?.image?.webp}`,
+      import.meta.url
+    ).href;
     avatar.value = uriImage;
   }
 });

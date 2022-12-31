@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { toRefs, computed } from "vue";
+import { toRefs, computed, watchEffect, ref } from "vue";
 import CommentUpdate from "@/components/CommentUpdate/CommentUpdate.vue";
 import useUsers from "@/composables/useUsers";
 import { getAvatar } from "@/utils";
@@ -40,6 +40,11 @@ const { getUserById, Auth } = useUsers();
 const user = computed(() => getUserById(userId.value));
 
 const renderAvatar = (nameAvatar) => getAvatar(nameAvatar);
+
+const avatar = ref(null);
+watchEffect(() => {
+  avatar.value = renderAvatar(user?.image?.webp);
+});
 
 function transformContent(content = "") {
   if (content.length == 0) return content;

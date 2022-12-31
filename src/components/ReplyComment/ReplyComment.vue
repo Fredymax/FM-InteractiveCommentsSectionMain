@@ -39,7 +39,7 @@ const disabled = ref(true);
 const comment = ref("");
 
 onMounted(() => {
-  avatar.value = getAvatar(Auth?.image?.webp);
+  avatar.value = getAvatar(Auth?.image?.png);
   const replyTo = getUserById(replyToUserId.value);
   if (replyTo) {
     comment.value = `@${replyTo.username} `;

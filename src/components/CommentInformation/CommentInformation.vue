@@ -3,7 +3,7 @@
     <div class="user">
       <div class="user__information">
         <figure class="user__avatar">
-          <img :src="renderAvatar(user?.image?.webp)" class="user__photo" :alt="user?.username" />
+          <img :src="renderAvatar(user?.image?.png)" class="user__photo" :alt="user?.username" />
         </figure>
         <strong class="user__name">{{ user?.username }}</strong>
         <span v-if="Auth.id === user?.id" class="user__you">You</span>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { toRefs, computed, watchEffect, ref } from "vue";
+import { toRefs, computed } from "vue";
 import CommentUpdate from "@/components/CommentUpdate/CommentUpdate.vue";
 import useUsers from "@/composables/useUsers";
 import { getAvatar } from "@/utils";
@@ -40,11 +40,6 @@ const { getUserById, Auth } = useUsers();
 const user = computed(() => getUserById(userId.value));
 
 const renderAvatar = (nameAvatar) => getAvatar(nameAvatar);
-
-const avatar = ref(null);
-watchEffect(() => {
-  avatar.value = renderAvatar(user?.image?.webp);
-});
 
 function transformContent(content = "") {
   if (content.length == 0) return content;

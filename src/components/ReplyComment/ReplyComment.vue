@@ -41,22 +41,17 @@ const disabled = ref(true);
 const comment = ref("");
 
 onMounted(() => {
+  avatar.value = getAvatar(Auth?.image?.webp);
   const replyTo = getUserById(replyToUserId.value);
   if (replyTo) {
     comment.value = `@${replyTo.username} `;
   }
 });
-
-watchEffect(() => {
-  if (Auth) {
-    // const uriImage = new URL(
-    //   `/src/assets/images/avatars/${Auth?.image?.webp}`,
-    //   import.meta.url
-    // ).href;
-
-    avatar.value = getAvatar(Auth?.image?.webp);
-  }
-});
+// watchEffect(() => {
+//   if (Auth) {
+//     avatar.value = getAvatar(Auth?.image?.webp);
+//   }
+// });
 
 watch(comment, (newValue) => {
   disabled.value = newValue.length == 0;

@@ -20,10 +20,9 @@
 </template>
 
 <script setup>
-import { toRefs, computed, ref } from "vue";
+import { toRefs, computed, ref, watchEffect } from "vue";
 import CommentUpdate from "@/components/CommentUpdate/CommentUpdate.vue";
 import useUsers from "@/composables/useUsers";
-import { getAvatar } from "@/utils";
 
 const props = defineProps({
   id: [Number, String],

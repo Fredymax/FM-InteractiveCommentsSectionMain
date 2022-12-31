@@ -4,7 +4,7 @@
       <img :src="avatar" class="user__photo" alt="..." />
     </figure>
     <div class="user__reply">
-      <textarea v-model="comment" placeholder="Reply to the comment"></textarea>
+      <textarea v-model="comment" :placeholder="commentId ? 'Add comment' : 'Reply to the comment'"></textarea>
     </div>
     <div class="user__action">
       <button @click="saveComment()" :disabled="disabled">{{ commentId ? "REPLY" : "SEND" }}</button>
@@ -16,7 +16,7 @@
 import useUsers from "@/composables/useUsers";
 import useComments from "@/composables/useComments";
 import { getAvatar } from "@/utils";
-import { onMounted, ref, inject, watch, toRefs } from "vue";
+import { onMounted, ref, inject, watch, toRefs, watchEffect } from "vue";
 const Swal = inject("$swal");
 
 const props = defineProps({
@@ -38,10 +38,17 @@ const disabled = ref(true);
 const comment = ref("");
 
 onMounted(() => {
-  avatar.value = getAvatar(Auth?.image?.png);
   const replyTo = getUserById(replyToUserId.value);
   if (replyTo) {
     comment.value = `@${replyTo.username} `;
+  }
+});
+
+watchEffect(() => {
+  if (Auth) {
+    const pathImage = `/src/assets/images/avatars/${Auth?.image?.webp}`;
+    const uriImage = new URL(pathImage, import.meta.url).href;
+    avatar.value = uriImage;
   }
 });
 

@@ -15,9 +15,9 @@
 <script setup>
 import useUsers from "@/composables/useUsers";
 import useComments from "@/composables/useComments";
-import { defineProps, toRefs } from "vue";
+import { toRefs } from "vue";
 import { getAvatar } from "@/utils";
-import { onMounted, ref, inject, watch } from "vue";
+import { onMounted, ref, inject, watch, watchEffect } from "vue";
 const Swal = inject("$swal");
 
 const props = defineProps({
@@ -40,11 +40,14 @@ const replyUsername = ref(null);
 const comment = ref("");
 
 onMounted(() => {
-  avatar.value = getAvatar(Auth?.image?.webp);
   const replyTo = getUserById(replyToUserId.value);
   if (replyTo) {
     comment.value = `@${replyTo.username} `;
   }
+});
+
+watchEffect(() => {
+  avatar.value = getAvatar(Auth?.image?.webp);
 });
 
 watch(comment, (newValue) => {
